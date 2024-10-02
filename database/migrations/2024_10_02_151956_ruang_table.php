@@ -16,8 +16,6 @@ return new class extends Migration
             $table->primary('id_ruangan');
             $table->string('ruangan');
             $table->string('nama_gedung');
-            $table->uuid('dokter_id');
-            $table->foreign('dokter_id')->references('id')->on('dokter');
             $table->timestamps();
         });
     }
