@@ -11,7 +11,7 @@ class dokterController extends Controller
      */
     public function index()
     {
-        $dokter = Dokter::all();
+        $dokter = dokter::all();
         $data['success'] = true;
         $data['result'] = $dokter;
         return response()->json($data,Response::HTTP_OK);
@@ -36,7 +36,7 @@ class dokterController extends Controller
             'spesialis' => 'required'
         ]);
 
-        $result = Dokter::create($validate);// Simpan ke Table
+        $result = dokter::create($validate);// Simpan ke Table
         if($result){
             $data['success'] = true;
             $data['message'] = 'Data Dokter berhasil disimpan';
@@ -72,12 +72,13 @@ class dokterController extends Controller
             'spesialis' => 'required'
         ]);
 
-        $result = Dokter::where('id', $id)->update($validate);
+        $result = dokter::where('id', $id)->update($validate);
         if($result){
             $data['success'] = true;
             $data['message'] = "data Dokter Berhasil Di Update";
             $data['result'] = $result;
             return response()->json($data,Response::HTTP_OK);
+        }
     }
 
     /**
@@ -85,7 +86,7 @@ class dokterController extends Controller
      */
     public function destroy(string $id)
     {
-        $dokter = Dokter::find($id);
+        $dokter = dokter::find($id);
         if($dokter){
             $dokter->delete();//hapus data berdasatkan id
             $data['success'] = true;
@@ -96,5 +97,6 @@ class dokterController extends Controller
             $data['success'] = false;
             $data['message'] = 'Data Dokter Tidak Di temukan';
             return response()->json($data, Response::HTTP_NOT_FOUND);
+        }   
     }
 }
