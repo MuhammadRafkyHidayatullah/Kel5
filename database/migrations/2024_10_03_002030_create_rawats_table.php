@@ -17,9 +17,9 @@ return new class extends Migration
             $table->date('tanggal_masuk'); 
             $table->date('tanggal_keluar')->nullable(); 
             $table->uuid('pasien_id');
-            $table->foreign('pasien_id')->references('id')->on('pasien');
+            $table->foreign('pasien_id')->references('id')->on('pasiens');
             $table->uuid('ruang_id');
-            $table->foreign('ruang_id')->references('id')->on('ruang');
+            $table->foreign('ruang_id')->references('id')->on('ruangs');
             $table->timestamps();
         });
     }
