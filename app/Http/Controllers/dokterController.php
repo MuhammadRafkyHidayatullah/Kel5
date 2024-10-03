@@ -11,6 +11,7 @@ class dokterController extends Controller
      */
     public function index()
     {
+
         $dokter = dokter::all();
         $data['success'] = true;
         $data['result'] = $dokter;
@@ -30,6 +31,7 @@ class dokterController extends Controller
      */
     public function store(Request $request)
     {
+
         $validate = $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
@@ -79,6 +81,7 @@ class dokterController extends Controller
             $data['result'] = $result;
             return response()->json($data,Response::HTTP_OK);
         }
+
     }
 
     /**
@@ -86,6 +89,7 @@ class dokterController extends Controller
      */
     public function destroy(string $id)
     {
+
         $dokter = dokter::find($id);
         if($dokter){
             $dokter->delete();//hapus data berdasatkan id
