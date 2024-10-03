@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('keluhan');
             $table->uuid('dokter_id');
-            $table->foreign('dokter_id')->references('id')->on('fakultas');
+            $table->foreign('dokter_id')->references('id')->on('dokter');
             $table->timestamps();
         });
     }
