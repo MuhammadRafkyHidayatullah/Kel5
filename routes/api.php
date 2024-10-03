@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\dokterController;
+
+use App\Http\Controllers\pasienController;
+
 use App\Http\Controllers\ruangController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +24,7 @@ Route::post('/ruang', [ruangController::class, 'store']);
 Route::patch('/ruang/{ruang}', [ruangController::class, 'update']);
 Route::delete('/ruang/{ruang}', [ruangController::class, 'destroy']);
 
+Route::get('/pasien', [pasienController::class,'index']);
+Route::post('/pasien', [pasienController::class,'store']);
+Route::delete('/pasien/{pasien}', [pasienController::class,'update']);
+Route::delete('/pasien/{pasien}', [pasienController::class,'destroy']);
