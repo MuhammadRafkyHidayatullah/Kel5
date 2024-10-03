@@ -11,7 +11,11 @@ class dokterController extends Controller
      */
     public function index()
     {
-        $dokter
+
+        $dokter = dokter::all();
+        $data['success'] = true;
+        $data['result'] = $dokter;
+        return response()->json($data,Response::HTTP_OK);
     }
 
     /**
@@ -27,7 +31,20 @@ class dokterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validate = $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'spesialis' => 'required'
+        ]);
+
+        $result = dokter::create($validate);// Simpan ke Table
+        if($result){
+            $data['success'] = true;
+            $data['message'] = 'Data Dokter berhasil disimpan';
+            $data['result'] = $result;
+            return response()->json(data: $data, status:Response::HTTP_CREATED);
+        }
     }
 
     /**
@@ -51,7 +68,20 @@ class dokterController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validate = $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'spesialis' => 'required'
+        ]);
+
+        $result = dokter::where('id', $id)->update($validate);
+        if($result){
+            $data['success'] = true;
+            $data['message'] = "data Dokter Berhasil Di Update";
+            $data['result'] = $result;
+            return response()->json($data,Response::HTTP_OK);
+        }
+
     }
 
     /**
@@ -59,6 +89,18 @@ class dokterController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $dokter = dokter::find($id);
+        if($dokter){
+            $dokter->delete();//hapus data berdasatkan id
+            $data['success'] = true;
+            $data['message'] = "data Dokter Berhasil Dihapus";
+            return response()->json($data, Response::HTTP_OK);
+        }
+        else{
+            $data['success'] = false;
+            $data['message'] = 'Data Dokter Tidak Di temukan';
+            return response()->json($data, Response::HTTP_NOT_FOUND);
+        }   
     }
 }
