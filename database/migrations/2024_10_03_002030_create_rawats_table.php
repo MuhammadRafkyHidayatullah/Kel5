@@ -12,7 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rawats', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->primary('id');
+            $table->date('tanggal_masuk'); 
+            $table->date('tanggal_keluar')->nullable(); 
+            $table->uuid('pasien_id');
+            $table->foreign('pasien_id')->references('id')->on('pasien');
+            $table->uuid('ruang_id');
+            $table->foreign('ruang_id')->references('id')->on('ruang');
             $table->timestamps();
         });
     }

@@ -71,7 +71,7 @@ class RawatController extends Controller
     }
 
     
-    public function destroy(rawat $rawat)
+    public function destroy(rawat $id)
     {
         $rawat = rawat::find($id);
         if($rawat){

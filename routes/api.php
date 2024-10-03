@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\dokterController;
 
 use App\Http\Controllers\pasienController;
-
+use App\Http\Controllers\RawatController;
 use App\Http\Controllers\ruangController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +28,9 @@ Route::get('/pasien', [pasienController::class,'index']);
 Route::post('/pasien', [pasienController::class,'store']);
 Route::delete('/pasien/{pasien}', [pasienController::class,'update']);
 Route::delete('/pasien/{pasien}', [pasienController::class,'destroy']);
+
+
+Route::get('/rawat', [RawatController::class,'index']);
+Route::post('/rawat', [RawatController::class,'store']);
+Route::delete('/rawat/{rawat}', [RawatController::class,'update']);
+Route::delete('/rawat/{rawat}', [RawatController::class,'destroy']);
