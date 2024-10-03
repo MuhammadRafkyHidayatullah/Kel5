@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\dokter;
+use Illuminate\Http\Response;
 
 class dokterController extends Controller
 {
@@ -12,7 +14,7 @@ class dokterController extends Controller
     public function index()
     {
 
-        $dokter = dokter::all();
+        $dokter = Dokter::all();
         $data['success'] = true;
         $data['result'] = $dokter;
         return response()->json($data,Response::HTTP_OK);

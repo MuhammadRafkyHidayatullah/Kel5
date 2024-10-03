@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class dokter extends Model
 {
-    use HasFactory, hasUuid;
+    use HasFactory, HasUuids;
     
-    protected $fillabe ['nama', 'alamat', 'spesialis'];
+    protected $fillabe = ['nama', 'alamat', 'spesialis'];
 }
